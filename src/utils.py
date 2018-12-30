@@ -3,6 +3,7 @@ import math
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 
@@ -27,6 +28,7 @@ def load_data(data_file_name: str) -> pd.DataFrame:
 
     df["time_of_day"] = (df.timestampMs % (1000*60*60*24)) / (1000*60*60)
     df["date_diff"] = df.timestampMs.diff()*-1
+    df['duration'] = (df.timestampMs.shift(1) - df.timestampMs.shift(-1)) / 2 / (1000 * 60 * 60)
 
     return df
 
@@ -39,14 +41,17 @@ def show_data_density(
         lat_min: int = -1_000_000_000,
         lat_max: int = 1_000_000_000
 ):
-    selection_long = (df.longitudeE7 > long_min) & (df.longitudeE7 < long_max)
-    selection_lat = (df.latitudeE7 > lat_min) & (df.latitudeE7 < lat_max)
-    selection = selection_long & selection_lat
+    selection = df[
+        (df.longitudeE7 > long_min)
+        & (df.longitudeE7 < long_max)
+        & (df.latitudeE7 > lat_min)
+        & (df.latitudeE7 < lat_max)
+        ]
 
     plt.figure(figsize=(16, 10))
     _, _, _, img = plt.hist2d(
-        x=df[selection].longitudeE7,
-        y=df[selection].latitudeE7,
+        x=selection.longitudeE7,
+        y=selection.latitudeE7,
         bins=300,
         norm=mpl.colors.LogNorm()
     )
@@ -78,3 +83,13 @@ def plot_single_day(
         figsize=(16, 10),
         colormap="viridis"
     )
+
+
+def movement(df: pd.DataFrame) -> pd.Series:
+    dx = df.longitudeE7.diff()
+    dy = df.latitudeE7.diff()
+    return np.sqrt(dx * dx + dy * dy)
+
+
+def log(series: pd.Series, epsilon: float = 0.0001) -> pd.Series:
+    return np.log(np.abs(series) + epsilon)
