@@ -1,4 +1,5 @@
 import json
+import math
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -49,3 +50,30 @@ def show_data_density(
         norm=mpl.colors.LogNorm()
     )
     plt.title(title, fontdict={"color": "lightgreen", "size": 20})
+
+
+def plot_single_day(
+        df: pd.DataFrame,
+        year: int,
+        month: int,
+        day: int
+):
+    df_part = pd.DataFrame(df[
+                               (df.accuracy < 100)
+                               & (df.year == year)
+                               & (df.month == month)
+                               & (df.day == day)
+                               ])
+
+    df_part['duration'] = df_part.timestampMs.diff() * -1
+    sqrt_duration = df_part.apply(lambda row: math.sqrt(row.duration), axis=1)
+
+    df_part.plot.scatter(
+        x='longitudeE7',
+        xerr=df_part.accuracy * 200,
+        y='latitudeE7',
+        c='time_of_day',
+        s=sqrt_duration,
+        figsize=(16, 10),
+        colormap='viridis'
+    )
