@@ -1,10 +1,12 @@
 import json
 import math
 
+import geopandas as gpd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from shapely.geometry import Point
 
 
 def load_data(data_file_name: str) -> pd.DataFrame:
@@ -31,6 +33,23 @@ def load_data(data_file_name: str) -> pd.DataFrame:
     df['duration'] = (df.timestampMs.shift(1) - df.timestampMs.shift(-1)) / 2 / (1000 * 60 * 60)
 
     return df
+
+
+def load_geo_data(data_file_name: str) -> gpd.GeoDataFrame:
+    df = load_data(data_file_name)
+    gdf = gpd.GeoDataFrame(
+        df, geometry=[
+            Point(xy)
+            for xy in zip(
+                df.longitudeE7 / 10_000_000,
+                df.latitudeE7 / 10_000_000
+            )
+        ]
+    )
+
+    # Setting the geometry by hand: http://geopandas.org/projections.html
+    gdf.crs = {'init': 'epsg:4326'}
+    return gdf
 
 
 def show_data_density(
