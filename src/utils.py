@@ -23,6 +23,7 @@ def load_data(data_file_name: str) -> pd.DataFrame:
     df["year"] = pd.DatetimeIndex(df.date).year
     df["month"] = pd.DatetimeIndex(df.date).month
     df["day"] = pd.DatetimeIndex(df.date).day
+    df["hour"] = pd.DatetimeIndex(df.date).hour
 
     df["time_of_day"] = (df.timestampMs % (1000*60*60*24)) / (1000*60*60)
     df["date_diff"] = df.timestampMs.diff()*-1
@@ -65,15 +66,15 @@ def plot_single_day(
                                & (df.day == day)
                                ])
 
-    df_part['duration'] = df_part.timestampMs.diff() * -1
+    df_part["duration"] = df_part.timestampMs.diff() * -1
     sqrt_duration = df_part.apply(lambda row: math.sqrt(row.duration), axis=1)
 
     df_part.plot.scatter(
-        x='longitudeE7',
+        x="longitudeE7",
         xerr=df_part.accuracy * 200,
-        y='latitudeE7',
-        c='time_of_day',
+        y="latitudeE7",
+        c="time_of_day",
         s=sqrt_duration,
         figsize=(16, 10),
-        colormap='viridis'
+        colormap="viridis"
     )
