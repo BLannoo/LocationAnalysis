@@ -1,2 +1,6 @@
 pandas
 matplotlib
+geopandas
+descartes # The descartes package is required for plotting polygons in geopandas.
+shapely
+rtree # needed for geopandas.sjoin
