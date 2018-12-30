@@ -19,3 +19,15 @@ jupyter contrib nbextension install
 . ./venv/bin/activate
 jupyter notebook
 ```
+
+### Get Google location data
+
+* got to [My Google Account](https://myaccount.google.com/)
+* -> Data & personalisation
+* -> Download your data
+* SELECT NONE
+* Location History
+* -> NEXT
+* -> CREATE ARCHIVE
+* DOWNLOAD
+* move file to data/raw
