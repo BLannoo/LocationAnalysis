@@ -8,6 +8,10 @@ import numpy as np
 import pandas as pd
 from shapely.geometry import Point
 
+# takes around 4s
+BELGIUM_ROADS = gpd.read_file("../data/raw/Belgium/belgium-roads-shape/roads.shp")
+BELGIUM_ROADS.crs = {"init": "epsg:4326"}
+
 
 def load_data(data_file_name: str) -> pd.DataFrame:
     with open(data_file_name) as data_file:
@@ -104,24 +108,31 @@ def plot_single_day(
     )
 
 
-def show_data_over_roads(gdf: gpd.GeoDataFrame):
-    minimal_border_size = 0.01
-
-    belgium = gpd.read_file("../data/raw/Belgium/belgium-roads-shape/roads.shp")
-    belgium.crs = {"init": "epsg:4326"}
-
-    ax = belgium.plot(edgecolor="gray", figsize=(10, 6), zorder=-1)
-    gdf.plot(ax=ax, marker="o", color="red", markersize=15, zorder=0)
-
+def determine_extrema_with_border(gdf):
+    relative_border_size = 0.1
+    absolute_border_size = 0.01
     bounds = gdf.geometry.bounds
     x_min = bounds.minx.min()
     x_max = bounds.maxx.max()
-    x_border = max((x_max - x_min) * 0.1, minimal_border_size)
-    plt.xlim([x_min - x_border, x_max + x_border])
+    x_border = max((x_max - x_min) * relative_border_size, absolute_border_size)
+    x_min_with_border = x_min - x_border
+    x_max_with_border = x_max + x_border
     y_min = bounds.miny.min()
     y_max = bounds.maxy.max()
-    y_border = max((y_max - y_min) * 0.1, minimal_border_size)
-    plt.ylim([y_min - y_border, y_max + y_border])
+    y_border = max((y_max - y_min) * relative_border_size, absolute_border_size)
+    y_min_with_border = y_min - y_border
+    y_max_with_border = y_max + y_border
+    return x_max_with_border, x_min_with_border, y_max_with_border, y_min_with_border
+
+
+def show_data_over_roads(gdf: gpd.GeoDataFrame):
+    x_max_with_border, x_min_with_border, y_max_with_border, y_min_with_border = determine_extrema_with_border(gdf)
+
+    ax = BELGIUM_ROADS.plot(edgecolor="gray", figsize=(10, 6), zorder=-1)
+    gdf.plot(ax=ax, marker="o", color="red", markersize=15, zorder=0)
+
+    plt.xlim([x_min_with_border, x_max_with_border])
+    plt.ylim([y_min_with_border, y_max_with_border])
 
 
 def movement(df: pd.DataFrame) -> pd.Series:
