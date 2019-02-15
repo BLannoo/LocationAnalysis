@@ -66,26 +66,28 @@ def transform_to_geo_data(df):
     return gdf
 
 
-def filter_points_in_belgium(gdf: pd.DataFrame) -> gpd.GeoDataFrame:
+def enhance_with_countries(gdf: pd.DataFrame) -> gpd.GeoDataFrame:
     if type(gdf) != gpd.GeoDataFrame:
         gdf = transform_to_geo_data(gdf)
 
     world = gpd.read_file(gpd.datasets.get_path("naturalearth_lowres"))
+    world.crs = {"init": "epsg:4326"}
     world.rename(columns={"name": "country"}, inplace=True)
-    world.drop(
-        ['pop_est', 'gdp_md_est', 'iso_a3']
-        , axis=1, inplace=True
-    )
 
     gdf_with_countries = gpd.sjoin(gdf, world, how="inner", op="intersects")
 
+    gdf_with_countries.drop(
+        ["index_right", "pop_est", "gdp_md_est", "iso_a3", "continent"]
+        , axis=1, inplace=True
+    )
+
+    return gdf_with_countries
+
+
+def filter_points_in_belgium(gdf: pd.DataFrame) -> gpd.GeoDataFrame:
+    gdf_with_countries = enhance_with_countries(gdf)
+
     return gdf_with_countries[gdf_with_countries["country"] == "Belgium"]
-
-
-def enhance_with_countries(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
-    world = gpd.read_file(gpd.datasets.get_path("naturalearth_lowres"))
-    world.crs = {"init": "epsg:4326"}
-    return gpd.sjoin(gdf, world, how="inner", op="intersects")
 
 
 def show_data_density(
@@ -140,9 +142,7 @@ def plot_single_day(
     )
 
 
-def determine_extrema_with_border(gdf):
-    relative_border_size = 0.1
-    absolute_border_size = 0.01
+def determine_extrema_with_border(gdf, relative_border_size=0.1, absolute_border_size=0.01):
     bounds = gdf.geometry.bounds
     x_min = bounds.minx.min()
     x_max = bounds.maxx.max()
