@@ -6,3 +6,4 @@ shapely
 rtree # needed for geopandas.sjoin
 seaborn
 sklearn
+jupyterlab
