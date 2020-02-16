@@ -1,29 +1,8 @@
 # LocationAnalysis
+'LocationAnalysis' is a project to explore your own gps data as downloaded from Google.  
 
-## Setup
-
-### jupyter notebook
-```bash
-virtualenv -p python3 venv
-. ./venv/bin/activate
-pip install jupyter jupyterthemes jupyter_contrib_nbextensions autopep8
-jt -t onedork # setup jupyter theme to dark
-jupyter contrib nbextension install
-```
-
-### python requirements
-```bash
-pip install -r requirements.txt
-```
-
-
-## Recurring
-
-### Start jupyter notebook
-```bash
-. ./venv/bin/activate
-jupyter notebook
-```
+You can find documentation for the following things under the docs folder:
+* [setup](/docs/setup.md)
 
 ### Get Google location data
 * go to [My Google Account](https://myaccount.google.com/)
