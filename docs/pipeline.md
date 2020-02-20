@@ -1,4 +1,6 @@
-# Rewritting the eda as a set of pipelines
+# Rewritting the eda as a set of notebooks in a pipeline
+
+## Pipes (input -> output)
 
 1) Transform the data from a .json to a .csv
     * json_to_csv.ipynb
@@ -17,3 +19,14 @@
         * year, month, day, hour
         * time_of_day
         * duration (half the distance between the 2 surrounding data points)
+        
+## Endpoints (input -> graphs/tables/numbers)
+
+* Analyse the view from an international scale
+    * international.ipynb
+    * graph of world map with gps dots
+    * table with percentage of presence in different countries
+        * Belgium: 87.7% (2018)
+        * Georgia: 4.6% (2018)
+        * Vietnam: 2.2% (2018)
+        
