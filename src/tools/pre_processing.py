@@ -29,3 +29,20 @@ def json_to_csv(input_file_name: str) -> pd.DataFrame:
                 ],
             }
         )
+    
+def enrich_data(df: pd.DataFrame) -> pd.DataFrame:
+    df["date"] = pd.to_datetime(df.timestampMs, unit="ms")
+    df["year"] = pd.DatetimeIndex(df.date).year
+    df["month"] = pd.DatetimeIndex(df.date).month
+    df["day"] = pd.DatetimeIndex(df.date).day
+    df["hour"] = pd.DatetimeIndex(df.date).hour
+
+    df["time_of_day"] = (
+        df.timestampMs % (1000 * 60 * 60 * 24)
+    ) / (1000 * 60 * 60)
+    
+    df["duration"] = (
+        df.timestampMs.shift(1) - df.timestampMs.shift(-1)
+    ) / 2 / (1000 * 60 * 60)
+
+    return df
