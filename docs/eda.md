@@ -1,16 +1,14 @@
 # Exploratory data analysis
 
-## 2018-12-30 19h->21h: Leuven.ipynb
-2) Q: Where have I been in Leuven?
-    * A: Everywhere inside the ring
-    * A: Many places around the ring
-
-## 2018-12-30 22h->23h: roads_data_overlay.ipynb
+## 2018-12-30: roads_data_overlay.ipynb
 1) Q: Where have I been inside Belgium?
     * A: 1 path towards Kortrijk + coast
     * A: Couple of paths towards the Ardenes
     * A: Many paths towards the Kempen
-2) Q: Where was I on 2018/12/25? (can I show 1 day)
+2) Q: Where have I been in Leuven?
+    * A: Everywhere inside the ring
+    * A: Many places around the ring
+3) Q: Where was I on 2018/12/25? (can I show 1 day)
     * A: From Leuven to Kortrijk. (yes)
 
 ## 2018-12-30: PlayGround.ipynb

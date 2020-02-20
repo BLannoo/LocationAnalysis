@@ -142,26 +142,62 @@ def plot_single_day(
     )
 
 
-def determine_extrema_with_border(gdf, relative_border_size=0.1, absolute_border_size=0.01):
+def determine_extrema_with_border(
+        gdf,
+        relative_border_size=0.1,
+        absolute_border_size=0.01
+):
     bounds = gdf.geometry.bounds
+
     x_min = bounds.minx.min()
     x_max = bounds.maxx.max()
-    x_border = max((x_max - x_min) * relative_border_size, absolute_border_size)
+    x_border = max(
+        (x_max - x_min) * relative_border_size,
+        absolute_border_size
+    )
     x_min_with_border = x_min - x_border
     x_max_with_border = x_max + x_border
+
     y_min = bounds.miny.min()
     y_max = bounds.maxy.max()
-    y_border = max((y_max - y_min) * relative_border_size, absolute_border_size)
+    y_border = max(
+        (y_max - y_min) * relative_border_size,
+        absolute_border_size
+    )
     y_min_with_border = y_min - y_border
     y_max_with_border = y_max + y_border
-    return x_max_with_border, x_min_with_border, y_max_with_border, y_min_with_border
+
+    return (
+        x_max_with_border,
+        x_min_with_border,
+        y_max_with_border,
+        y_min_with_border
+    )
 
 
-def show_data_over_roads(gdf: gpd.GeoDataFrame):
-    x_max_with_border, x_min_with_border, y_max_with_border, y_min_with_border = determine_extrema_with_border(gdf)
+def show_data_over_roads(
+        gdf: gpd.GeoDataFrame,
+        zorder_roads: float = -1
+):
+    (
+        x_max_with_border,
+        x_min_with_border,
+        y_max_with_border,
+        y_min_with_border
+    ) = determine_extrema_with_border(gdf)
 
-    ax = BELGIUM_ROADS.plot(edgecolor="gray", figsize=(10, 6), zorder=-1)
-    gdf.plot(ax=ax, marker="o", color="red", markersize=15, zorder=0)
+    ax = BELGIUM_ROADS.plot(
+        edgecolor="gray",
+        figsize=(10, 6),
+        zorder=zorder_roads
+    )
+    gdf.plot(
+        ax=ax,
+        marker="o",
+        color="red",
+        markersize=15,
+        zorder=0
+    )
 
     plt.xlim([x_min_with_border, x_max_with_border])
     plt.ylim([y_min_with_border, y_max_with_border])
