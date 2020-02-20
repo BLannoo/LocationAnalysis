@@ -1,17 +1,6 @@
 # Exploratory data analysis
 
-## 2018-12-30 19h->21h: Geopandas.ipynb
-1) Q: In what countries have I been?
-    * A: Visualy: 
-        * Belgium and south of it
-        * Georgia
-        * Abu Dhabi
-        * South-east Asia
-    * A: In Numbers
-        * 87.7% Belgium
-        * 4.6% Georgia
-        * 2.2% Vietnam
-        * ...
+## 2018-12-30 19h->21h: Leuven.ipynb
 2) Q: Where have I been in Leuven?
     * A: Everywhere inside the ring
     * A: Many places around the ring

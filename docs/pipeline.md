@@ -22,11 +22,16 @@
         
 ## Endpoints (input -> graphs/tables/numbers)
 
-* Analyse the view from an international scale
+* Q: In what countries have I been?
     * international.ipynb
-    * graph of world map with gps dots
-    * table with percentage of presence in different countries
-        * Belgium: 87.7% (2018)
-        * Georgia: 4.6% (2018)
-        * Vietnam: 2.2% (2018)
+    * A: Visualy: 
+        * Belgium and south of it
+        * Georgia
+        * Abu Dhabi
+        * South-east Asia
+    * A: In Numbers
+        * 87.7% Belgium
+        * 4.6% Georgia
+        * 2.2% Vietnam
+        * ...
         
