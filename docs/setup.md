@@ -12,7 +12,7 @@
 4) Activate that venv
     `source ./.venv/bin/activate`
 5) Install the dependencies to this project
-    `pip install -r requirements`
+    `pip install -r requirements.txt`
 6) Start the jupyter server
     `jupyter lab`
 
