@@ -18,8 +18,8 @@
         * country, continent, iso_a3(Country code)
 3) Sample some time intervals
     * sample_intervals.ipynb
-    * output: data/samples/sample_*.csv
-    * 2018, 2019, 2020_01
+    * output: data/samples/*.csv
+    * 2018, 2019, 2020/01, 2018-Belgium
         
 ## Endpoints (input -> graphs/tables/numbers)
 
