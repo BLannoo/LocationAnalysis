@@ -79,6 +79,11 @@ def enrich_data_with_geographic_features(
     
     return df
 
+def read_csv_as_geopandas(file_name: str) -> gpd.GeoDataFrame:
+    return transform_to_geo_data(
+        pd.read_csv(file_name)
+    )
+
 def transform_to_geo_data(df: pd.DataFrame) -> gpd.GeoDataFrame:
     gdf = gpd.GeoDataFrame(
         df, geometry=[
