@@ -15,6 +15,7 @@
         * year, month, day, hour
         * time_of_day
         * duration (half the distance between the 2 surrounding data points)
+        * country, continent, iso_a3(Country code)
 3) Sample some time intervals
     * sample_intervals.ipynb
     * output: data/samples/sample_*.csv

@@ -33,6 +33,13 @@ def json_to_csv(input_file_name: str) -> pd.DataFrame:
         )
     
 def enrich_data(df: pd.DataFrame) -> pd.DataFrame:
+    df = enrich_data_with_datetime_features(df)
+    df = enrich_data_with_geographic_features(df)
+    return df
+
+def enrich_data_with_datetime_features(
+    df: pd.DataFrame
+) -> pd.DataFrame:
     df["date"] = pd.to_datetime(df.timestampMs, unit="ms")
     df["year"] = pd.DatetimeIndex(df.date).year
     df["month"] = pd.DatetimeIndex(df.date).month
@@ -47,6 +54,29 @@ def enrich_data(df: pd.DataFrame) -> pd.DataFrame:
         df.timestampMs.shift(-1) - df.timestampMs.shift(1)
     ) / 2 / (1000 * 60 * 60)
 
+    return df
+
+def enrich_data_with_geographic_features(
+    df: pd.DataFrame
+) -> pd.DataFrame:
+    world = gpd.read_file(
+        gpd.datasets.get_path("naturalearth_lowres")
+    )
+    world.crs = {"init" :"epsg:4326"}
+    world = world.drop(columns=['pop_est', 'gdp_md_est'])
+    world = world.rename(columns={'name': 'country'})
+
+    df = pd.DataFrame(
+        gpd.sjoin(
+            transform_to_geo_data(df), 
+            world, 
+            how="inner", 
+            op="intersects"
+        )
+    )
+    
+    df = df.drop(columns=['index_right'])
+    
     return df
 
 def transform_to_geo_data(df: pd.DataFrame) -> gpd.GeoDataFrame:
