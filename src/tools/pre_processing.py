@@ -62,7 +62,7 @@ def enrich_data_with_geographic_features(
     world = gpd.read_file(
         gpd.datasets.get_path("naturalearth_lowres")
     )
-    world.crs = {"init" :"epsg:4326"}
+    world.crs = "epsg:4326"
     world = world.drop(columns=['pop_est', 'gdp_md_est'])
     world = world.rename(columns={'name': 'country'})
 
@@ -90,5 +90,5 @@ def transform_to_geo_data(df: pd.DataFrame) -> gpd.GeoDataFrame:
         ]
     )
     # Setting the geometry by hand: http://geopandas.org/projections.html
-    gdf.crs = {"init": "epsg:4326"}
+    gdf.crs = "epsg:4326"
     return gdf

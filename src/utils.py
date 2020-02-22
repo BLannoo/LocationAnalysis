@@ -10,7 +10,7 @@ from shapely.geometry import Point
 
 # takes around 4s
 BELGIUM_ROADS = gpd.read_file("../data/raw/Belgium/belgium-roads-shape/roads.shp")
-BELGIUM_ROADS.crs = {"init": "epsg:4326"}
+BELGIUM_ROADS.crs = "epsg:4326"
 
 
 # deprecated: only enhance the data if you need it
@@ -62,7 +62,7 @@ def transform_to_geo_data(df):
         ]
     )
     # Setting the geometry by hand: http://geopandas.org/projections.html
-    gdf.crs = {"init": "epsg:4326"}
+    gdf.crs = "epsg:4326"
     return gdf
 
 
@@ -71,7 +71,7 @@ def enhance_with_countries(gdf: pd.DataFrame) -> gpd.GeoDataFrame:
         gdf = transform_to_geo_data(gdf)
 
     world = gpd.read_file(gpd.datasets.get_path("naturalearth_lowres"))
-    world.crs = {"init": "epsg:4326"}
+    world.crs = "epsg:4326"
     world.rename(columns={"name": "country"}, inplace=True)
 
     gdf_with_countries = gpd.sjoin(gdf, world, how="inner", op="intersects")
