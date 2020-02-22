@@ -14,5 +14,6 @@
 ### Code style: [black](https://github.com/psf/black)
 1) Enforce code style in .ipynb files:
     `%load_ext lab_black` in de first cell
+    REMARK: It seems that black does not work on cells with `%%time`
 2) Enforce code style in .py files:
     `black {source_file_or_directory}`
