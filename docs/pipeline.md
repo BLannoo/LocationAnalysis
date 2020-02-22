@@ -7,18 +7,18 @@
     * output: data/raw-csv/full.csv
     * load time .json: 10.8s
     * load time .csv: 1.94s
-2) Sample some time intervals
-    * sample_intervals.ipynb
-    * output: data/samples/sample_*.csv
-    * 2018, 2019, 2020_01
-3) Enrich all the csv generated previously with some derived data
+2) Enrich the gps data with: derived features
     * enrich.ipynb
-    * output: data/enriched/*.csv
+    * output: data/enriched/enriched.csv
     * adds:
         * dates
         * year, month, day, hour
         * time_of_day
         * duration (half the distance between the 2 surrounding data points)
+3) Sample some time intervals
+    * sample_intervals.ipynb
+    * output: data/samples/sample_*.csv
+    * 2018, 2019, 2020_01
         
 ## Endpoints (input -> graphs/tables/numbers)
 
