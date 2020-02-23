@@ -23,8 +23,8 @@
         
 ## Endpoints (input -> graphs/tables/numbers)
 
-* Q: In what countries have I been?
-    * international.ipynb
+### International.ipynb
+* Q: In what countries have I been? 
     * A: Visualy: 
         * Belgium and south of it
         * Georgia
@@ -36,3 +36,13 @@
         * 2.2% Vietnam
         * ...
         
+### roads_data_overlay.ipynb
+* Q: Where have I been inside Belgium?
+    * A: 1 path towards Kortrijk + coast
+    * A: Couple of paths towards the Ardenes
+    * A: Many paths towards the Kempen
+* Q: Where have I been in Leuven?
+    * A: Everywhere inside the ring
+    * A: Many places around the ring
+* Q: Where was I on 2018/12/25? (can I show 1 day)
+    * A: From Leuven to Kortrijk. (yes)

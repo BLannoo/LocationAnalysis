@@ -1,16 +1,5 @@
 # Exploratory data analysis
 
-## 2018-12-30: roads_data_overlay.ipynb
-1) Q: Where have I been inside Belgium?
-    * A: 1 path towards Kortrijk + coast
-    * A: Couple of paths towards the Ardenes
-    * A: Many paths towards the Kempen
-2) Q: Where have I been in Leuven?
-    * A: Everywhere inside the ring
-    * A: Many places around the ring
-3) Q: Where was I on 2018/12/25? (can I show 1 day)
-    * A: From Leuven to Kortrijk. (yes)
-
 ## 2018-12-30: PlayGround.ipynb
 1) Q: How much variance is there in my position per hour?
     * A: 0 and |---|e^0|e^30|---|
