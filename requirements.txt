@@ -8,3 +8,4 @@ seaborn
 sklearn
 jupyterlab
 nb_black
+jupyterlab-git
