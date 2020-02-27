@@ -2,6 +2,7 @@ import json
 import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point
+from src.tools.movement import movement
 
 
 def json_to_csv(input_file_name: str) -> pd.DataFrame:
@@ -25,6 +26,7 @@ def json_to_csv(input_file_name: str) -> pd.DataFrame:
 def enrich_data(df: pd.DataFrame) -> pd.DataFrame:
     df = enrich_data_with_datetime_features(df)
     df = enrich_data_with_geographic_features(df)
+    df["movement"] = movement(df)
     return df
 
 
