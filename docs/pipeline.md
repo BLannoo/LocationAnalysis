@@ -46,3 +46,11 @@
     * A: Many places around the ring
 * Q: Where was I on 2018/12/25? (can I show 1 day)
     * A: From Leuven to Kortrijk. (yes)
+
+### random-stats.ipynb
+1) Q: How much variance is there in my position per hour?
+    * A: 0 and |---|e^0|e^30|---|
+2) Q: How much variability is there in my movement?
+    * A: 0 and |---|e^-5|e^10|---|
+3) Q: How are the time intervals between measurements over the time of the day?
+    * A: some patterns, but nothing obvious

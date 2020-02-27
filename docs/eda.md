@@ -1,13 +1,5 @@
 # Exploratory data analysis
 
-## 2018-12-30: PlayGround.ipynb
-1) Q: How much variance is there in my position per hour?
-    * A: 0 and |---|e^0|e^30|---|
-2) Q: How much variability is there in my movement?
-    * A: 0 and |---|e^-5|e^10|---|
-3) Q: How are the time intervals between measurements over the time of the day?
-    * A: some patterns, but nothing obvious
-
 ## 2018-12-30: Working.ipynb
 1) Q: When are measurements taken during the day?
     * A: Less at night
