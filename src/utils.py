@@ -177,8 +177,12 @@ def determine_extrema_with_border(
 
 def show_data_over_roads(
         gdf: gpd.GeoDataFrame,
-        zorder_roads: float = -1
+        zorder_roads: float = -1,
+        ax=None
 ):
+    if ax is None:
+        _, ax = plt.subplots()
+    
     (
         x_max_with_border,
         x_min_with_border,
@@ -186,9 +190,9 @@ def show_data_over_roads(
         y_min_with_border
     ) = determine_extrema_with_border(gdf)
 
-    ax = BELGIUM_ROADS.plot(
+    BELGIUM_ROADS.plot(
+        ax=ax,
         edgecolor="gray",
-        figsize=(10, 6),
         zorder=zorder_roads
     )
     gdf.plot(
@@ -199,8 +203,8 @@ def show_data_over_roads(
         zorder=0
     )
 
-    plt.xlim([x_min_with_border, x_max_with_border])
-    plt.ylim([y_min_with_border, y_max_with_border])
+    ax.set_xlim([x_min_with_border, x_max_with_border])
+    ax.set_ylim([y_min_with_border, y_max_with_border])
 
 
 def movement(df: pd.DataFrame) -> pd.Series:
