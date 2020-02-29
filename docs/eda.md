@@ -1,9 +1,5 @@
 # Exploratory data analysis
 
-## 2018-12-30: Working.ipynb
-1) Q: Can you plot a couple of single days?
-    * A: Yes, but it could need more work
-
 ## 2019-02-05-recognize-missing-data.ipynb
 1) Q: How many hours do we typically expect between data points?
     * A: 86 cases > 2h

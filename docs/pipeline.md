@@ -1,5 +1,4 @@
 # Rewritting the eda as a set of notebooks in a pipeline
-
 ## Pipes (input -> output)
 
 1) Transform the data from a .json to a .csv
@@ -22,7 +21,6 @@
     * 2018, 2019, 2020/01, 2018-Belgium
         
 ## Endpoints (input -> graphs/tables/numbers)
-
 ### random-stats.ipynb
 1) Q: How much variance is there in my position per hour?
     * A: 0 and |---|e^0|e^30|---|
@@ -33,11 +31,9 @@
 4) Q: When are measurements taken during the day?
     * A: Less at night
 
-
 ### work_life_balance.ipynb
 1) Q: How long am I at Kunlabora usually?
     * A: Somewhere between 8 and 9 hours
-
 
 ### International.ipynb
 * Q: In what countries have I been? 
@@ -67,3 +63,8 @@
 1) Q: Can you show me heath maps of important locations?
     * A: Yes it's pretty beautifull
     * A: Inside Belgium it tells a similar story as roads_data_overlay.ipynb
+
+### visualize_single_days.ipynb
+1) Q: Can you plot a couple of single days?
+    * A: Yes, but it could need more work 
+        * eg: integration with roads_data_overlay.ipynb

@@ -2,6 +2,7 @@ import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import matplotlib as mpl
+import math
 
 
 # TODO find the data from the root of the git-repo
@@ -80,3 +81,28 @@ def show_data_density(
         norm=mpl.colors.LogNorm(),
     )
     plt.title(title, fontdict={"color": "lightgreen", "size": 20})
+
+
+def plot_single_day(df: pd.DataFrame, year: int, month: int, day: int):
+    selection = pd.DataFrame(
+        df[
+            (df.accuracy < 100)
+            & (df.year == year)
+            & (df.month == month)
+            & (df.day == day)
+        ]
+    )
+
+    sqrt_duration = selection.apply(
+        lambda row: math.sqrt(row.duration * (1000 * 60 * 60)), axis=1
+    )
+
+    selection.plot.scatter(
+        x="longitudeE7",
+        xerr=selection.accuracy * 200,
+        y="latitudeE7",
+        c="time_of_day",
+        s=sqrt_duration,
+        figsize=(16, 10),
+        colormap="viridis",
+    )
