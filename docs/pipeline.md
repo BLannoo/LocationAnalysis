@@ -59,6 +59,14 @@
 * Q: Where was I on 2018/12/25? (can I show 1 day)
     * A: From Leuven to Kortrijk. (yes)
 
+## recognize-missing-data.ipynb
+1) Q: How many hours do we typically expect between data points?
+    * A: 82 cases > 2h
+    * A: outliers > 0.1h == 6min
+2) Q: When do the bigger gaps happen?
+    * A: > 15min => clearly during the night
+    * A: > 6min => also kind of during the night
+
 ### area_heathmaps.ipynb
 1) Q: Can you show me heath maps of important locations?
     * A: Yes it's pretty beautifull

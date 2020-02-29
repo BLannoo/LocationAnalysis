@@ -1,13 +1,5 @@
 # Exploratory data analysis
 
-## 2019-02-05-recognize-missing-data.ipynb
-1) Q: How many hours do we typically expect between data points?
-    * A: 86 cases > 2h
-    * A: outliers > 0.1h
-2) Q: When do the bigger gaps happen?
-    * A: > 15min => clearly during the night
-    * A: > 5min => also kind of during the night
-
 ## 2019-02-07-find-dense-areas.ipynb
 1) Q: Can we recognize some patterns from plotting all the data in a heath map?
     * A: Yes, we see many of the main Belgian roads and cities
