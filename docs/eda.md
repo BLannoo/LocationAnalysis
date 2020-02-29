@@ -1,13 +1,11 @@
 # Exploratory data analysis
 
 ## 2018-12-30: Working.ipynb
-1) Q: When are measurements taken during the day?
-    * A: Less at night
-2) Q: Can you show me heath maps of important locations?
+1) Q: Can you show me heath maps of important locations?
     * A: Yes it's pretty beautifull
-3) Q: Can you plot a couple of single days?
+2) Q: Can you plot a couple of single days?
     * A: Yes, but it could need more work
-4) Q: How long am I at Kunlabora usually?
+3) Q: How long am I at Kunlabora usually?
     * A: Somewhere between 8 and 9 hours
 
 ## 2019-02-05-recognize-missing-data.ipynb
