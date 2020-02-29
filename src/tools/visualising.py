@@ -10,7 +10,12 @@ BELGIAN_ROADS_FILE_NAME = "data/raw/Belgium/belgium-roads-shape/roads.shp"
 BELGIAN_ROADS_CACHE = None
 
 
-def show_data_over_roads(gdf: gpd.GeoDataFrame, zorder_roads: float = -1, ax=None):
+def show_data_over_roads(
+    gdf: gpd.GeoDataFrame,
+    zorder_roads: float = -1,
+    ax=None,
+    repository_root_location="../../",
+):
     if ax is None:
         _, ax = plt.subplots()
 
@@ -21,9 +26,9 @@ def show_data_over_roads(gdf: gpd.GeoDataFrame, zorder_roads: float = -1, ax=Non
         y_min_with_border,
     ) = determine_extrema_with_border(gdf)
 
-    ax = load_or_get_belgium_roads().plot(
-        edgecolor="gray", figsize=(10, 6), zorder=zorder_roads
-    )
+    ax = load_or_get_belgium_roads(
+        repository_root_location=repository_root_location
+    ).plot(ax=ax, edgecolor="gray", figsize=(10, 6), zorder=zorder_roads)
     gdf.plot(ax=ax, marker="o", color="red", markersize=15, zorder=0)
 
     plt.xlim([x_min_with_border, x_max_with_border])
