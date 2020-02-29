@@ -1,5 +1,7 @@
+import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 
 
 # TODO find the data from the root of the git-repo
@@ -53,3 +55,28 @@ def load_or_get_belgium_roads(
         belgian_roads_cache = gpd.read_file(belgian_roads_file_name)
         belgian_roads_cache.crs = "epsg:4326"
     return belgian_roads_cache
+
+
+def show_data_density(
+    df: pd.DataFrame,
+    title: str,
+    long_min: int = -1_000_000_000,
+    long_max: int = 1_000_000_000,
+    lat_min: int = -1_000_000_000,
+    lat_max: int = 1_000_000_000,
+):
+    selection = df[
+        (df.longitudeE7 > long_min)
+        & (df.longitudeE7 < long_max)
+        & (df.latitudeE7 > lat_min)
+        & (df.latitudeE7 < lat_max)
+    ]
+
+    plt.figure(figsize=(16, 10))
+    _, _, _, img = plt.hist2d(
+        x=selection.longitudeE7,
+        y=selection.latitudeE7,
+        bins=300,
+        norm=mpl.colors.LogNorm(),
+    )
+    plt.title(title, fontdict={"color": "lightgreen", "size": 20})

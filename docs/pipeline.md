@@ -56,3 +56,8 @@
     * A: Many places around the ring
 * Q: Where was I on 2018/12/25? (can I show 1 day)
     * A: From Leuven to Kortrijk. (yes)
+
+### area_heathmaps.ipynb
+1) Q: Can you show me heath maps of important locations?
+    * A: Yes it's pretty beautifull
+    * A: Inside Belgium it tells a similar story as roads_data_overlay.ipynb
