@@ -33,6 +33,12 @@
 4) Q: When are measurements taken during the day?
     * A: Less at night
 
+
+### work_life_balance.ipynb
+1) Q: How long am I at Kunlabora usually?
+    * A: Somewhere between 8 and 9 hours
+
+
 ### International.ipynb
 * Q: In what countries have I been? 
     * A: Visualy: 

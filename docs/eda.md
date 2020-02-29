@@ -3,8 +3,6 @@
 ## 2018-12-30: Working.ipynb
 1) Q: Can you plot a couple of single days?
     * A: Yes, but it could need more work
-2) Q: How long am I at Kunlabora usually?
-    * A: Somewhere between 8 and 9 hours
 
 ## 2019-02-05-recognize-missing-data.ipynb
 1) Q: How many hours do we typically expect between data points?
