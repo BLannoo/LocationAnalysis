@@ -6,11 +6,14 @@ import math
 
 
 # TODO find the data from the root of the git-repo
-BELGIAN_ROADS_FILE_NAME = "../../data/raw/Belgium/belgium-roads-shape/roads.shp"
+BELGIAN_ROADS_FILE_NAME = "data/raw/Belgium/belgium-roads-shape/roads.shp"
 BELGIAN_ROADS_CACHE = None
 
 
-def show_data_over_roads(gdf: gpd.GeoDataFrame, zorder_roads: float = -1):
+def show_data_over_roads(gdf: gpd.GeoDataFrame, zorder_roads: float = -1, ax=None):
+    if ax is None:
+        _, ax = plt.subplots()
+
     (
         x_max_with_border,
         x_min_with_border,
@@ -49,13 +52,16 @@ def determine_extrema_with_border(
 
 def load_or_get_belgium_roads(
     belgian_roads_file_name: str = BELGIAN_ROADS_FILE_NAME,
-    belgian_roads_cache: gpd.GeoDataFrame = BELGIAN_ROADS_CACHE,
-):
-    if belgian_roads_cache == None:
+    repository_root_location: str = "../../",
+) -> gpd.GeoDataFrame:
+    global BELGIAN_ROADS_CACHE
+    if BELGIAN_ROADS_CACHE is None:
         # takes around 4s
-        belgian_roads_cache = gpd.read_file(belgian_roads_file_name)
-        belgian_roads_cache.crs = "epsg:4326"
-    return belgian_roads_cache
+        BELGIAN_ROADS_CACHE = gpd.read_file(
+            repository_root_location + belgian_roads_file_name
+        )
+        BELGIAN_ROADS_CACHE.crs = "epsg:4326"
+    return BELGIAN_ROADS_CACHE
 
 
 def show_data_density(
