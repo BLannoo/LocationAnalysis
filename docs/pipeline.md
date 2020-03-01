@@ -21,19 +21,18 @@
     * 2018, 2019, 2020/01, 2018-Belgium
         
 ## Endpoints (input -> graphs/tables/numbers)
-### random-stats.ipynb
-1) Q: How much variance is there in my position per hour?
-    * A: 0 and |---|e^0|e^30|---|
-2) Q: How much variability is there in my movement?
-    * A: 0 and |---|e^-5|e^10|---|
-3) Q: How are the time intervals between measurements over the time of the day?
-    * A: some patterns, but nothing obvious
-4) Q: When are measurements taken during the day?
-    * A: Less at night
-
 ### work_life_balance.ipynb
 1) Q: How long am I at Kunlabora usually?
     * A: Somewhere between 8 and 9 hours
+
+## find-dense-areas.ipynb
+1) Q: Can we find the most important places for me?
+    * A: Yes, using a heatmap we can bin Belgium and the bins with the highest counts are indeed places I can recognize.
+2) Q: Can we show the places with the highest density in a recognizable way?
+    * A: Yes, by showing those data points, overlaying a map of the nearby Belgian roads.
+    * A: Yes, places show up like: 
+        * Ensure, Maisuradze, Eddie, Saman, Bankstraat, Vincent, Leuven marked (crossing of many paths?), Kunlabora, Alfred Delaunoislaan, Cegeka
+    * A: we can also show them on a Belgian scale
 
 ### International.ipynb
 * Q: In what countries have I been? 
@@ -58,6 +57,16 @@
     * A: Many places around the ring
 * Q: Where was I on 2018/12/25? (can I show 1 day)
     * A: From Leuven to Kortrijk. (yes)
+
+### random-stats.ipynb
+1) Q: How much variance is there in my position per hour?
+    * A: 0 and |---|e^0|e^30|---|
+2) Q: How much variability is there in my movement?
+    * A: 0 and |---|e^-5|e^10|---|
+3) Q: How are the time intervals between measurements over the time of the day?
+    * A: some patterns, but nothing obvious
+4) Q: When are measurements taken during the day?
+    * A: Less at night
 
 ## recognize-missing-data.ipynb
 1) Q: How many hours do we typically expect between data points?

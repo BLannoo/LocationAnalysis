@@ -26,13 +26,17 @@ def show_data_over_roads(
         y_min_with_border,
     ) = determine_extrema_with_border(gdf)
 
-    ax = load_or_get_belgium_roads(
-        repository_root_location=repository_root_location
-    ).plot(ax=ax, edgecolor="gray", figsize=(10, 6), zorder=zorder_roads)
+    load_or_get_belgium_roads(repository_root_location=repository_root_location).plot(
+        ax=ax, edgecolor="gray", figsize=(10, 6), zorder=zorder_roads
+    )
     gdf.plot(ax=ax, marker="o", color="red", markersize=15, zorder=0)
 
-    plt.xlim([x_min_with_border, x_max_with_border])
-    plt.ylim([y_min_with_border, y_max_with_border])
+    ax.set_xlim([x_min_with_border, x_max_with_border])
+    ax.set_ylim([y_min_with_border, y_max_with_border])
+
+    ax.set_title(
+        f"First point at: {gdf.latitudeE7.iloc[0]/10_000_000}, {gdf.longitudeE7.iloc[0]/10_000_000}"
+    )
 
 
 def determine_extrema_with_border(
