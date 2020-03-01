@@ -76,3 +76,7 @@
 1) Q: Can you plot a couple of single days?
     * A: Yes, but it could need more work 
         * eg: integration with roads_data_overlay.ipynb
+
+### experiment_rendering_speed.ipynb
+1) Q: Would it be faster to exclude roads which wont be rendered in the final graph?
+    * A: No, it is even slower (mostlikely due to the exclusion logic)
