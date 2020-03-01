@@ -23,6 +23,11 @@
     `jupyter lab`
     
 # Configuring Jupytext
+Based on documentation from:
+* [Their github](https://github.com/mwouts/jupytext/blob/master/README.md#paired-notebooks)
+* [Their medium blog](https://medium.com/capital-fund-management/automated-reports-with-jupyter-notebooks-using-jupytext-and-papermill-619e60c37330)
+* [Some of their docs on global configuration](https://jupytext.readthedocs.io/en/latest/using-server.html#global-configuration)
+
 ## Context
 Jupytext is a tool that allows seperating the code in your notebooks from the output cells.  
 This allows to keep your output and commit your notebooks to git without those outputs.
