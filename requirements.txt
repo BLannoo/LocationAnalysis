@@ -9,3 +9,4 @@ sklearn
 jupyterlab
 nb_black
 jupyterlab-git
+jupytext

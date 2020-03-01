@@ -21,3 +21,22 @@
     `source ./.venv/bin/activate`
 2) Start the jupyter server
     `jupyter lab`
+    
+# Configuring Jupytext
+## Context
+Jupytext is a tool that allows seperating the code in your notebooks from the output cells.  
+This allows to keep your output and commit your notebooks to git without those outputs.
+## Initial setup (to generate a .py when you create/save a .ipynb)
+1) Install jupytext (included in requirements.txt)
+2) Generate a jupyter config on your local machine (TODO make this project specific)
+    ```bash
+    jupyter notebook --generate-config
+    ```
+3) Add the following config to `~/.jupyter/jupyter_notebook_config.py`
+    ```python
+    c.NotebookApp.contents_manager_class = "jupytext.TextFileContentsManager"
+    c.ContentsManager.default_jupytext_formats = "ipynb,py:percent"
+    ```
+
+
+
