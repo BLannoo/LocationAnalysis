@@ -26,6 +26,7 @@
 ## Context
 Jupytext is a tool that allows seperating the code in your notebooks from the output cells.  
 This allows to keep your output and commit your notebooks to git without those outputs.
+
 ## Initial setup (to generate a .py when you create/save a .ipynb)
 1) Install jupytext (included in requirements.txt)
 2) Generate a jupyter config on your local machine (TODO make this project specific)
@@ -38,5 +39,5 @@ This allows to keep your output and commit your notebooks to git without those o
     c.ContentsManager.default_jupytext_formats = "ipynb,py:percent"
     ```
 
-
-
+## Opening .py as notebooks
+1) Right click *.py > Open With > Notebook
