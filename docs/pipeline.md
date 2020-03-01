@@ -94,4 +94,8 @@
 1) Q: Is it possible to use K-means to find hotspots?
     * A: Maybe, but K-means would also show paths with no nearby hotspots as being centroids. (not obvious from notebook)
     * A: DBSCAN might be a more appropriate algorithm for this
-    
+
+## visualize-sequence-of-locations.ipynb
+1) Q: Is it possible to visualize a data point within the context of the surrounding data points?
+    * A: Yes
+    * TODO: still some cleaning up, extraction and extensions possible
