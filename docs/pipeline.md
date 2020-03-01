@@ -89,3 +89,9 @@
 ### experiment_rendering_speed.ipynb
 1) Q: Would it be faster to exclude roads which wont be rendered in the final graph?
     * A: No, it is even slower (mostlikely due to the exclusion logic)
+
+## kmeans-clustering.ipynb
+1) Q: Is it possible to use K-means to find hotspots?
+    * A: Maybe, but K-means would also show paths with no nearby hotspots as being centroids. (not obvious from notebook)
+    * A: DBSCAN might be a more appropriate algorithm for this
+    
