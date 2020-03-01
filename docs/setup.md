@@ -41,3 +41,4 @@ This allows to keep your output and commit your notebooks to git without those o
 
 ## Opening .py as notebooks
 1) Right click *.py > Open With > Notebook
+2) Save the notebook (this will generate an .ipynb)
